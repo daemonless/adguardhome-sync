@@ -25,6 +25,7 @@ LABEL org.opencontainers.image.title="AdGuardHome Sync" \
 
 # Build adguardhome-sync from source
 RUN pkg install -y go git && \
+    mkdir -p /app && \
     VERSION=$(fetch -qo - "${UPSTREAM_URL}" | jq -r '.tag_name') && \
     echo "Building AdGuardHome Sync ${VERSION}" && \
     git clone --depth 1 --branch "${VERSION}" https://github.com/bakito/adguardhome-sync.git /tmp/src && \
