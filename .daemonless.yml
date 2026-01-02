@@ -1,3 +1,4 @@
 name: adguardhome-sync
 category: Network
 description: Sync AdGuardHome config to replica instances
+icon: ':simple-adguard:'
