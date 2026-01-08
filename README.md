@@ -39,17 +39,14 @@ cron: "*/5 * * * *"
 # run sync on startup
 runOnStart: true
 
-# origin instance (primary)
-origin:
-  url: http://192.168.4.53:3000
-  username: admin
-  password: admin
-
-# replica instances
-replicas:
-  - url: http://192.168.4.54:3000
+    # Primary instance
+    url: http://<primary-ip>:3000
     username: admin
-    password: admin
+    password: password
+    # Secondary instances to sync to
+    replica:
+      - url: http://<replica-ip>:3000
+        username: admin
 
 # API server
 api:
