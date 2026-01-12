@@ -1,4 +1,3 @@
-#!/usr/bin/execlineb -P
-with-contenv
-s6-setuidgid bsd
-/usr/local/bin/adguardhome-sync run --config /config/adguardhome-sync.yaml
+#!/bin/sh
+# Start adguardhome-sync
+exec s6-setuidgid bsd /usr/local/bin/adguardhome-sync run --config /config/adguardhome-sync.yaml

@@ -1,96 +1,89 @@
-# adguardhome-sync
+# AdGuardHome Sync
 
-Sync AdGuardHome configuration from an origin instance to replica instances, running natively on FreeBSD.
+Sync AdGuardHome configuration to replica instances.
 
-## Quick Start
+| | |
+|---|---|
+| **Port** | 8080 |
+| **Registry** | `ghcr.io/daemonless/adguardhome-sync` |
+| **Source** | [https://github.com/bakito/adguardhome-sync](https://github.com/bakito/adguardhome-sync) |
+| **Website** | [https://github.com/bakito/adguardhome-sync](https://github.com/bakito/adguardhome-sync) |
 
-### Podman
+## Deployment
 
-```bash
-podman run --name adguardhome-sync\
-    --restart unless-stopped\
-    -v /my/own/config:/config\
-    -p 8080:8080/tcp\
-    -d ghcr.io/daemonless/adguardhome-sync
-```
-
-### Compose
+### Podman Compose
 
 ```yaml
 services:
   adguardhome-sync:
     image: ghcr.io/daemonless/adguardhome-sync:latest
     container_name: adguardhome-sync
-    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
     volumes:
-      - /my/own/config:/config
+      - /path/to/containers/adguardhome-sync:/config
     ports:
-      - "8080:8080/tcp"
+      - 8080:8080
+    restart: unless-stopped
+```
+
+### Podman CLI
+
+```bash
+podman run -d --name adguardhome-sync \
+  -p 8080:8080 \
+  -e PUID=@PUID@ \
+  -e PGID=@PGID@ \
+  -e TZ=@TZ@ \
+  -v /path/to/containers/adguardhome-sync:/config \ 
+  ghcr.io/daemonless/adguardhome-sync:latest
+```
+Access at: `http://localhost:8080`
+
+### Ansible
+
+```yaml
+- name: Deploy adguardhome-sync
+  containers.podman.podman_container:
+    name: adguardhome-sync
+    image: ghcr.io/daemonless/adguardhome-sync:latest
+    state: started
+    restart_policy: always
+    env:
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "UTC"
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/path/to/containers/adguardhome-sync:/config"
 ```
 
 ## Configuration
 
-Create `/config/adguardhome-sync.yaml`:
+### Environment Variables
 
-```yaml
-# cron expression for sync schedule
-cron: "*/5 * * * *"
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PUID` | `1000` | User ID for the application process |
+| `PGID` | `1000` | Group ID for the application process |
+| `TZ` | `UTC` | Timezone for the container |
 
-# run sync on startup
-runOnStart: true
-
-    # Primary instance
-    url: http://<primary-ip>:3000
-    username: admin
-    password: password
-    # Secondary instances to sync to
-    replica:
-      - url: http://<replica-ip>:3000
-        username: admin
-
-# API server
-api:
-  port: 8080
-```
-
-## Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `PUID` | User ID | `1000` |
-| `PGID` | Group ID | `1000` |
-| `TZ` | Timezone | `UTC` |
-
-## What Gets Synced
-
-- General settings
-- DNS configuration (rewrites, access lists, server config)
-- Filters
-- Client settings
-- DHCP settings (optional)
-- Services
-- Query log config
-- Statistics config
-
-## Volumes
+### Volumes
 
 | Path | Description |
 |------|-------------|
 | `/config` | Configuration directory |
 
-## Ports
+### Ports
 
 | Port | Protocol | Description |
 |------|----------|-------------|
-| 8080 | TCP | Web API / metrics |
+| `8080` | TCP | Metrics/API |
 
-## Tags
+## Notes
 
-| Tag | Source | Description |
-|-----|--------|-------------|
-| `:latest` | [Upstream Releases](https://github.com/bakito/adguardhome-sync/releases) | Latest upstream release |
-
-## Links
-
-- [Upstream Repository](https://github.com/bakito/adguardhome-sync)
-- [Configuration Reference](https://github.com/bakito/adguardhome-sync#config-file)
+- **User:** `bsd` (UID/GID set via PUID/PGID)
+- **Base:** Built on `ghcr.io/daemonless/base` (FreeBSD)
