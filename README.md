@@ -11,6 +11,7 @@ Sync AdGuardHome configuration to replica instances.
 |---|---|
 | **Port** | 8080 |
 | **Registry** | `ghcr.io/daemonless/adguardhome-sync` |
+| **Docs** | [daemonless.io/images/adguardhome-sync](https://daemonless.io/images/adguardhome-sync/) |
 | **Source** | [https://github.com/bakito/adguardhome-sync](https://github.com/bakito/adguardhome-sync) |
 | **Website** | [https://github.com/bakito/adguardhome-sync](https://github.com/bakito/adguardhome-sync) |
 
