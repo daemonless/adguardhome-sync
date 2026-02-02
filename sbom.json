@@ -1,11 +1,11 @@
 {
   "image": "adguardhome-sync",
-  "generated": "2026-02-01T22:34:45Z",
+  "generated": "2026-02-02T13:40:10Z",
   "tags": {
     "latest": {
       "app_version": "v0.8.2",
       "source": "upstream-binary",
-      "generated": "2026-02-01T22:22:20Z",
+      "generated": "2026-02-02T13:26:26Z",
       "packages": {
         "freebsd": [
           {
