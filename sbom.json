@@ -1,11 +1,12 @@
 {
   "image": "adguardhome-sync",
-  "generated": "2026-02-02T13:40:10Z",
+  "generated": "2026-02-06T00:15:02Z",
   "tags": {
     "latest": {
+      "arch": "amd64",
       "app_version": "v0.8.2",
       "source": "upstream-binary",
-      "generated": "2026-02-02T13:26:26Z",
+      "generated": "2026-02-05T23:53:16Z",
       "packages": {
         "freebsd": [
           {
@@ -160,15 +161,188 @@
         "dotnet": [],
         "python": [],
         "node": [],
-        "go": []
+        "go": [
+          {
+            "name": "github.com/apapsch/go-jsonmerge/v2",
+            "version": "v2.0.0"
+          },
+          {
+            "name": "github.com/bakito/adguardhome-sync",
+            "version": "v0.8.2"
+          },
+          {
+            "name": "github.com/beorn7/perks",
+            "version": "v1.0.1"
+          },
+          {
+            "name": "github.com/caarlos0/env/v11",
+            "version": "v11.3.1"
+          },
+          {
+            "name": "github.com/cespare/xxhash/v2",
+            "version": "v2.3.0"
+          },
+          {
+            "name": "github.com/gabriel-vasile/mimetype",
+            "version": "v1.4.9"
+          },
+          {
+            "name": "github.com/gin-contrib/sse",
+            "version": "v1.1.0"
+          },
+          {
+            "name": "github.com/gin-gonic/gin",
+            "version": "v1.11.0"
+          },
+          {
+            "name": "github.com/go-playground/locales",
+            "version": "v0.14.1"
+          },
+          {
+            "name": "github.com/go-playground/universal-translator",
+            "version": "v0.18.1"
+          },
+          {
+            "name": "github.com/go-playground/validator/v10",
+            "version": "v10.27.0"
+          },
+          {
+            "name": "github.com/go-resty/resty/v2",
+            "version": "v2.16.5"
+          },
+          {
+            "name": "github.com/goccy/go-yaml",
+            "version": "v1.18.0"
+          },
+          {
+            "name": "github.com/google/uuid",
+            "version": "v1.6.0"
+          },
+          {
+            "name": "github.com/jinzhu/copier",
+            "version": "v0.4.0"
+          },
+          {
+            "name": "github.com/leodido/go-urn",
+            "version": "v1.4.0"
+          },
+          {
+            "name": "github.com/mattn/go-isatty",
+            "version": "v0.0.20"
+          },
+          {
+            "name": "github.com/munnerz/goautoneg",
+            "version": "v0.0.0-20191010083416-a7dc8b61c822"
+          },
+          {
+            "name": "github.com/oapi-codegen/runtime",
+            "version": "v1.1.2"
+          },
+          {
+            "name": "github.com/pelletier/go-toml/v2",
+            "version": "v2.2.4"
+          },
+          {
+            "name": "github.com/prometheus/client_golang",
+            "version": "v1.23.2"
+          },
+          {
+            "name": "github.com/prometheus/client_model",
+            "version": "v0.6.2"
+          },
+          {
+            "name": "github.com/prometheus/common",
+            "version": "v0.66.1"
+          },
+          {
+            "name": "github.com/prometheus/procfs",
+            "version": "v0.16.1"
+          },
+          {
+            "name": "github.com/quic-go/qpack",
+            "version": "v0.5.1"
+          },
+          {
+            "name": "github.com/quic-go/quic-go",
+            "version": "v0.54.1"
+          },
+          {
+            "name": "github.com/robfig/cron/v3",
+            "version": "v3.0.1"
+          },
+          {
+            "name": "github.com/santhosh-tekuri/jsonschema/v6",
+            "version": "v6.0.2"
+          },
+          {
+            "name": "github.com/spf13/cobra",
+            "version": "v1.10.1"
+          },
+          {
+            "name": "github.com/spf13/pflag",
+            "version": "v1.0.9"
+          },
+          {
+            "name": "github.com/ugorji/go/codec",
+            "version": "v1.3.0"
+          },
+          {
+            "name": "go.uber.org/multierr",
+            "version": "v1.11.0"
+          },
+          {
+            "name": "go.uber.org/zap",
+            "version": "v1.27.0"
+          },
+          {
+            "name": "go.yaml.in/yaml/v2",
+            "version": "v2.4.2"
+          },
+          {
+            "name": "golang.org/x/crypto",
+            "version": "v0.42.0"
+          },
+          {
+            "name": "golang.org/x/mod",
+            "version": "v0.29.0"
+          },
+          {
+            "name": "golang.org/x/net",
+            "version": "v0.44.0"
+          },
+          {
+            "name": "golang.org/x/sys",
+            "version": "v0.36.0"
+          },
+          {
+            "name": "golang.org/x/text",
+            "version": "v0.29.0"
+          },
+          {
+            "name": "google.golang.org/protobuf",
+            "version": "v1.36.9"
+          },
+          {
+            "name": "gopkg.in/yaml.v3",
+            "version": "v3.0.1"
+          },
+          {
+            "name": "k8s.io/utils",
+            "version": "v0.0.0-20251002143259-bc988d571ff4"
+          },
+          {
+            "name": "stdlib",
+            "version": "v1.25.6"
+          }
+        ]
       },
       "summary": {
         "freebsd": 37,
         "dotnet": 0,
         "python": 0,
         "node": 0,
-        "go": 0,
-        "total": 37
+        "go": 43,
+        "total": 80
       }
     }
   }
