@@ -1,12 +1,12 @@
 {
   "image": "adguardhome-sync",
-  "generated": "2026-02-06T00:15:02Z",
+  "generated": "2026-02-13T12:07:54Z",
   "tags": {
     "latest": {
       "arch": "amd64",
       "app_version": "v0.8.2",
-      "source": "upstream-binary",
-      "generated": "2026-02-05T23:53:16Z",
+      "source": "upstream",
+      "generated": "2026-02-13T12:06:07Z",
       "packages": {
         "freebsd": [
           {
@@ -15,7 +15,7 @@
           },
           {
             "name": "FreeBSD-blocklist",
-            "version": "15.0"
+            "version": "15.0p3"
           },
           {
             "name": "FreeBSD-bzip2-lib",
@@ -159,16 +159,18 @@
           }
         ],
         "dotnet": [],
-        "python": [],
-        "node": [],
         "go": [
-          {
-            "name": "github.com/apapsch/go-jsonmerge/v2",
-            "version": "v2.0.0"
-          },
           {
             "name": "github.com/bakito/adguardhome-sync",
             "version": "v0.8.2"
+          },
+          {
+            "name": "stdlib",
+            "version": "v1.25.7"
+          },
+          {
+            "name": "github.com/apapsch/go-jsonmerge/v2",
+            "version": "v2.0.0"
           },
           {
             "name": "github.com/beorn7/perks",
@@ -329,19 +331,25 @@
           {
             "name": "k8s.io/utils",
             "version": "v0.0.0-20251002143259-bc988d571ff4"
-          },
-          {
-            "name": "stdlib",
-            "version": "v1.25.6"
           }
-        ]
+        ],
+        "java": [],
+        "node": [],
+        "php": [],
+        "python": [],
+        "ruby": [],
+        "rust": []
       },
       "summary": {
         "freebsd": 37,
         "dotnet": 0,
-        "python": 0,
-        "node": 0,
         "go": 43,
+        "java": 0,
+        "node": 0,
+        "php": 0,
+        "python": 0,
+        "ruby": 0,
+        "rust": 0,
         "total": 80
       }
     }
