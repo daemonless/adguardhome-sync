@@ -1,12 +1,12 @@
 {
   "image": "adguardhome-sync",
-  "generated": "2026-02-16T18:13:08Z",
+  "generated": "2026-03-01T09:13:11Z",
   "tags": {
     "latest": {
       "arch": "amd64",
-      "app_version": "v0.8.2",
+      "app_version": "v0.9.0",
       "source": "upstream",
-      "generated": "2026-02-16T18:12:52Z",
+      "generated": "2026-03-01T09:12:57Z",
       "packages": {
         "freebsd": [
           {
@@ -162,11 +162,11 @@
         "go": [
           {
             "name": "github.com/bakito/adguardhome-sync",
-            "version": "v0.8.2"
+            "version": "v0.9.0"
           },
           {
             "name": "stdlib",
-            "version": "v1.25.7"
+            "version": "v1.26.0"
           },
           {
             "name": "github.com/apapsch/go-jsonmerge/v2",
@@ -178,7 +178,7 @@
           },
           {
             "name": "github.com/caarlos0/env/v11",
-            "version": "v11.3.1"
+            "version": "v11.4.0"
           },
           {
             "name": "github.com/cespare/xxhash/v2",
@@ -210,7 +210,7 @@
           },
           {
             "name": "github.com/go-resty/resty/v2",
-            "version": "v2.16.5"
+            "version": "v2.17.2"
           },
           {
             "name": "github.com/goccy/go-yaml",
@@ -238,7 +238,7 @@
           },
           {
             "name": "github.com/oapi-codegen/runtime",
-            "version": "v1.1.2"
+            "version": "v1.2.0"
           },
           {
             "name": "github.com/pelletier/go-toml/v2",
@@ -262,11 +262,11 @@
           },
           {
             "name": "github.com/quic-go/qpack",
-            "version": "v0.5.1"
+            "version": "v0.6.0"
           },
           {
             "name": "github.com/quic-go/quic-go",
-            "version": "v0.54.1"
+            "version": "v0.57.0"
           },
           {
             "name": "github.com/robfig/cron/v3",
@@ -278,7 +278,7 @@
           },
           {
             "name": "github.com/spf13/cobra",
-            "version": "v1.10.1"
+            "version": "v1.10.2"
           },
           {
             "name": "github.com/spf13/pflag",
@@ -294,31 +294,31 @@
           },
           {
             "name": "go.uber.org/zap",
-            "version": "v1.27.0"
+            "version": "v1.27.1"
           },
           {
             "name": "go.yaml.in/yaml/v2",
-            "version": "v2.4.2"
+            "version": "v2.4.3"
           },
           {
             "name": "golang.org/x/crypto",
-            "version": "v0.42.0"
+            "version": "v0.47.0"
           },
           {
             "name": "golang.org/x/mod",
-            "version": "v0.29.0"
+            "version": "v0.33.0"
           },
           {
             "name": "golang.org/x/net",
-            "version": "v0.44.0"
+            "version": "v0.49.0"
           },
           {
             "name": "golang.org/x/sys",
-            "version": "v0.36.0"
+            "version": "v0.40.0"
           },
           {
             "name": "golang.org/x/text",
-            "version": "v0.29.0"
+            "version": "v0.33.0"
           },
           {
             "name": "google.golang.org/protobuf",
@@ -327,10 +327,6 @@
           {
             "name": "gopkg.in/yaml.v3",
             "version": "v3.0.1"
-          },
-          {
-            "name": "k8s.io/utils",
-            "version": "v0.0.0-20251002143259-bc988d571ff4"
           }
         ],
         "java": [],
@@ -343,14 +339,14 @@
       "summary": {
         "freebsd": 37,
         "dotnet": 0,
-        "go": 43,
+        "go": 42,
         "java": 0,
         "node": 0,
         "php": 0,
         "python": 0,
         "ruby": 0,
         "rust": 0,
-        "total": 80
+        "total": 79
       }
     }
   }
