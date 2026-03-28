@@ -5,15 +5,28 @@ Source: dbuild templates
 
 # AdGuardHome Sync
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/daemonless/adguardhome-sync/build.yaml?style=flat-square&label=Build&color=green)](https://github.com/daemonless/adguardhome-sync/actions)
+[![Last Commit](https://img.shields.io/github/last-commit/daemonless/adguardhome-sync?style=flat-square&label=Last+Commit&color=blue)](https://github.com/daemonless/adguardhome-sync/commits)
+
 Sync AdGuardHome configuration to replica instances.
+
 
 | | |
 |---|---|
 | **Port** | 8080 |
 | **Registry** | `ghcr.io/daemonless/adguardhome-sync` |
-| **Docs** | [daemonless.io/images/adguardhome-sync](https://daemonless.io/images/adguardhome-sync/) |
 | **Source** | [https://github.com/bakito/adguardhome-sync](https://github.com/bakito/adguardhome-sync) |
 | **Website** | [https://github.com/bakito/adguardhome-sync](https://github.com/bakito/adguardhome-sync) |
+
+## Version Tags
+
+| Tag | Description | Best For |
+| :--- | :--- | :--- |
+| `latest` | **Upstream Binary**. Built from official release. | Most users. Matches Linux Docker behavior. |
+
+## Prerequisites
+
+Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
 
@@ -29,7 +42,7 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /path/to/containers/adguardhome-sync:/config
+      - "/path/to/containers/adguardhome-sync:/config"
     ports:
       - 8080:8080
     restart: unless-stopped
@@ -40,13 +53,12 @@ services:
 ```bash
 podman run -d --name adguardhome-sync \
   -p 8080:8080 \
-  -e PUID=@PUID@ \
-  -e PGID=@PGID@ \
-  -e TZ=@TZ@ \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=UTC \
   -v /path/to/containers/adguardhome-sync:/config \
   ghcr.io/daemonless/adguardhome-sync:latest
 ```
-Access at: `http://localhost:8080`
 
 ### Ansible
 
@@ -58,16 +70,19 @@ Access at: `http://localhost:8080`
     state: started
     restart_policy: always
     env:
-      PUID: "@PUID@"
-      PGID: "@PGID@"
-      TZ: "@TZ@"
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "UTC"
     ports:
       - "8080:8080"
     volumes:
       - "/path/to/containers/adguardhome-sync:/config"
 ```
 
-## Configuration
+Access at: `http://localhost:8080`
+
+## Parameters
+
 ### Environment Variables
 
 | Variable | Default | Description |
@@ -75,19 +90,23 @@ Access at: `http://localhost:8080`
 | `PUID` | `1000` | User ID for the application process |
 | `PGID` | `1000` | Group ID for the application process |
 | `TZ` | `UTC` | Timezone for the container |
+
 ### Volumes
 
 | Path | Description |
 |------|-------------|
 | `/config` | Configuration directory |
+
 ### Ports
 
 | Port | Protocol | Description |
 |------|----------|-------------|
 | `8080` | TCP | Metrics/API |
 
-## Notes
+**Architectures:** amd64
+**User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
+**Base:** FreeBSD 15.0
 
-- **Architectures:** amd64
-- **User:** `bsd` (UID/GID set via PUID/PGID)
-- **Base:** Built on `ghcr.io/daemonless/base` (FreeBSD)
+---
+
+Need help? Join our [Discord](https://discord.gg/Kb9tkhecZT) community.
