@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-26T23:36:42Z",
+  "generated": "2026-05-07T08:04:32Z",
   "image": "adguardhome-sync",
   "tags": {
     "latest": {
       "app_version": "v0.9.0",
       "arch": "amd64",
-      "generated": "2026-04-26T23:35:24Z",
+      "generated": "2026-05-07T08:03:14Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -95,7 +95,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0p6"
+            "version": "15.0p8"
           },
           {
             "name": "FreeBSD-tcpd",
@@ -123,7 +123,7 @@
           },
           {
             "name": "FreeBSD-zoneinfo",
-            "version": "15.0"
+            "version": "15.0p7"
           },
           {
             "name": "ca_root_nss",
