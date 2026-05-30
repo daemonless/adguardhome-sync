@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-18T12:47:41Z",
+  "generated": "2026-05-30T10:11:08Z",
   "image": "adguardhome-sync",
   "tags": {
     "latest": {
       "app_version": "v0.9.0",
       "arch": "amd64",
-      "generated": "2026-05-18T12:46:19Z",
+      "generated": "2026-05-30T10:09:52Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -51,7 +51,7 @@
           },
           {
             "name": "FreeBSD-libcasper",
-            "version": "15.0"
+            "version": "15.0p9"
           },
           {
             "name": "FreeBSD-libexecinfo",
@@ -95,7 +95,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0p8"
+            "version": "15.0p9"
           },
           {
             "name": "FreeBSD-tcpd",
@@ -107,7 +107,7 @@
           },
           {
             "name": "FreeBSD-utilities",
-            "version": "15.0p1"
+            "version": "15.0p9"
           },
           {
             "name": "FreeBSD-xz-lib",
