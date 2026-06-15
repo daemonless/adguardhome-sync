@@ -1,0 +1,45 @@
+name: adguardhome-sync
+
+x-daemonless:
+  title: "AdGuardHome Sync"
+  icon: ":simple-adguard:"
+  category: "Network"
+  description: "Sync AdGuardHome configuration to replica instances."
+  upstream_url: "https://github.com/bakito/adguardhome-sync"
+  web_url: "https://github.com/bakito/adguardhome-sync"
+  freshports_url: ""
+  user: "bsd"
+  mlock: false
+  upstream_binary: true
+  
+  docs:
+    env:
+      PUID: "User ID for the application process"
+      PGID: "Group ID for the application process"
+      TZ: "Timezone for the container"
+      CONFIG_FILE: "Path to configuration file (default: /config/adguardhome-sync.yaml)"
+    volumes:
+      /config: "Configuration directory"
+    ports:
+      8080: "Metrics/API"
+
+services:
+  adguardhome-sync:
+    image: ghcr.io/daemonless/adguardhome-sync:latest
+    container_name: adguardhome-sync
+    restart: unless-stopped
+    network_mode: host
+    
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+    volumes:
+      - smoke_vol_38:/config
+
+    ports:
+      - ":8080"
+
+volumes:
+  smoke_vol_38: {}
