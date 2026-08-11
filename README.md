@@ -10,7 +10,6 @@ Source: dbuild templates
 
 Sync AdGuardHome configuration to replica instances.
 
-
 | | |
 |---|---|
 | **Port** | 8080 |
@@ -19,13 +18,11 @@ Sync AdGuardHome configuration to replica instances.
 | **Website** | [https://github.com/bakito/adguardhome-sync](https://github.com/bakito/adguardhome-sync) |
 
 ## Version Tags
-
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
-| `latest` | **Upstream Binary**. Built from official release. | Most users. Matches Linux Docker behavior. |
+| `latest` | **Upstream Binary**. Built from official release. | Most users — recommended. |
 
 ## Prerequisites
-
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
@@ -35,18 +32,72 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   adguardhome-sync:
-    image: ghcr.io/daemonless/adguardhome-sync:latest
+    image: "ghcr.io/daemonless/adguardhome-sync:latest"
     container_name: adguardhome-sync
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=UTC
+      - PUID=1000  # User ID for the application process
+      - PGID=1000  # Group ID for the application process
+      - TZ=UTC  # Timezone for the container
+      - CONFIG_FILE=  # Path to configuration file (default: /config/adguardhome-sync.yaml)
     volumes:
       - "/path/to/containers/adguardhome-sync:/config"
     ports:
-      - 8080:8080
+      - "8080:8080"
     restart: unless-stopped
 ```
+
+### AppJail Director
+**.env**:
+
+```
+# .env
+
+DIRECTOR_PROJECT=adguardhome-sync
+PUID=1000
+PGID=1000
+TZ=UTC
+CONFIG_FILE=
+```
+
+**appjail-director.yml**:
+
+```yaml
+# appjail-director.yml
+
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+services:
+  adguardhome-sync:
+    name: adguardhome_sync
+    options:
+      - container: 'boot args:--pull'
+      - expose: '8080:8080 proto:tcp'
+    oci:
+      user: root
+      environment:
+        - PUID: !ENV '${PUID}'
+        - PGID: !ENV '${PGID}'
+        - TZ: !ENV '${TZ}'
+        - CONFIG_FILE: !ENV '${CONFIG_FILE}'
+    volumes:
+      - adguardhome-sync: /config
+volumes:
+  adguardhome-sync:
+    device: '/path/to/containers/adguardhome-sync'
+```
+
+**Makejail**:
+
+```
+# Makejail
+
+ARG tag=latest
+
+OPTION overwrite=force
+OPTION from=ghcr.io/daemonless/adguardhome-sync:${tag}
+```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Podman CLI
 
@@ -56,9 +107,28 @@ podman run -d --name adguardhome-sync \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=UTC \
+  -e CONFIG_FILE= \
   -v /path/to/containers/adguardhome-sync:/config \
   ghcr.io/daemonless/adguardhome-sync:latest
 ```
+
+### AppJail
+
+```bash
+appjail oci run -Pd \
+  -o overwrite=force \
+  -o container="args:--pull" \
+  -o virtualnet=":<random> default" \
+  -o nat \
+  -o expose="8080:8080 proto:tcp" \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=UTC \
+  -e CONFIG_FILE= \
+  -o fstab="/path/to/containers/adguardhome-sync /config <pseudofs>" \
+  ghcr.io/daemonless/adguardhome-sync:latest adguardhome-sync
+```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Ansible
 
@@ -66,20 +136,19 @@ podman run -d --name adguardhome-sync \
 - name: Deploy adguardhome-sync
   containers.podman.podman_container:
     name: adguardhome-sync
-    image: ghcr.io/daemonless/adguardhome-sync:latest
+    image: "ghcr.io/daemonless/adguardhome-sync:latest"
     state: started
     restart_policy: always
     env:
       PUID: "1000"
       PGID: "1000"
       TZ: "UTC"
+      CONFIG_FILE: ""
     ports:
       - "8080:8080"
     volumes:
       - "/path/to/containers/adguardhome-sync:/config"
 ```
-
-Access at: `http://localhost:8080`
 
 ## Parameters
 
@@ -90,6 +159,7 @@ Access at: `http://localhost:8080`
 | `PUID` | `1000` | User ID for the application process |
 | `PGID` | `1000` | Group ID for the application process |
 | `TZ` | `UTC` | Timezone for the container |
+| `CONFIG_FILE` | `` | Path to configuration file (default: /config/adguardhome-sync.yaml) |
 
 ### Volumes
 
@@ -105,7 +175,7 @@ Access at: `http://localhost:8080`
 
 **Architectures:** amd64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
-**Base:** FreeBSD 15.0
+**Base:** FreeBSD 15
 
 ---
 
