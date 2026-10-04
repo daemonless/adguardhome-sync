@@ -41,7 +41,7 @@ services:
       - TZ=UTC  # Timezone for the container
       - CONFIG_FILE=  # Path to configuration file (default: /config/adguardhome-sync.yaml)
     volumes:
-      - "/path/to/containers/adguardhome-sync:/config"
+      - "/containers/adguardhome-sync:/config"
     ports:
       - "8080:8080"
     # always (not unless-stopped) so FreeBSD's podman rc.d auto-starts it at boot
@@ -88,7 +88,7 @@ services:
       - adguardhome-sync: /config
 volumes:
   adguardhome-sync:
-    device: '/path/to/containers/adguardhome-sync'
+    device: '/containers/adguardhome-sync'
 ```
 
 **Makejail**:
@@ -104,47 +104,6 @@ OPTION from=ghcr.io/daemonless/adguardhome-sync:${tag}
 ```
 
 Save the files above, then run `appjail-director up`.
-
-
-> [!WARNING]
-> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
->
-> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
-
-### Podman CLI
-
-```bash
-podman run -d --name adguardhome-sync \
-  -p 8080:8080 \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=UTC \
-  -e CONFIG_FILE= \
-  -v /path/to/containers/adguardhome-sync:/config \
-  ghcr.io/daemonless/adguardhome-sync:latest
-```
-
-Save as `run.sh`, then run `sh run.sh`.
-
-### AppJail
-
-
-```bash
-appjail oci run -Pd \
-  -o overwrite=force \
-  -o container="args:--pull" \
-  -o virtualnet=":<random> default" \
-  -o nat \
-  -o expose="8080:8080 proto:tcp" \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=UTC \
-  -e CONFIG_FILE= \
-  -o fstab="/path/to/containers/adguardhome-sync /config <pseudofs>" \
-  ghcr.io/daemonless/adguardhome-sync:latest adguardhome-sync
-```
-
-Save the files above, then run `sh run.sh`.
 
 
 > [!WARNING]
@@ -170,42 +129,10 @@ services:
       - TZ=UTC
       - CONFIG_FILE=
     volumes:
-      - "/path/to/containers/adguardhome-sync:/config"
+      - "/containers/adguardhome-sync:/config"
 ```
 
-Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
-
-```bash
-bastille create -O \
-  --env PUID=1000 \
-  --env PGID=1000 \
-  --env TZ=UTC \
-  --env CONFIG_FILE= \
-  --volume /path/to/containers/adguardhome-sync /config \
-  adguardhome-sync ghcr.io/daemonless/adguardhome-sync:latest inherit
-```
-
-### Ansible
-
-```yaml
-- name: Deploy adguardhome-sync
-  containers.podman.podman_container:
-    name: adguardhome-sync
-    image: "ghcr.io/daemonless/adguardhome-sync:latest"
-    state: started
-    restart_policy: always
-    env:
-      PUID: "1000"
-      PGID: "1000"
-      TZ: "UTC"
-      CONFIG_FILE: ""
-    ports:
-      - "8080:8080"
-    volumes:
-      - "/path/to/containers/adguardhome-sync:/config"
-```
-
-Save as `adguardhome-sync-deploy.yaml`, then run `ansible-playbook adguardhome-sync-deploy.yaml`.
+Save as `bastille-compose.yml`, then run `bastille up`.
 
 ## Parameters
 

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-21T22:18:58Z",
+  "generated": "2026-10-04T19:30:00Z",
   "image": "adguardhome-sync",
   "tags": {
     "latest": {
       "app_version": "v0.9.3",
       "arch": "amd64",
-      "generated": "2026-09-21T22:03:22Z",
+      "generated": "2026-10-04T19:28:20Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -252,7 +252,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.129"
+            "version": "3.130"
           },
           {
             "licenses": [
