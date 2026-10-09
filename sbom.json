@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-04T19:30:00Z",
+  "generated": "2026-10-09T23:09:48Z",
   "image": "adguardhome-sync",
   "tags": {
     "latest": {
-      "app_version": "v0.9.3",
+      "app_version": "v0.9.4",
       "arch": "amd64",
-      "generated": "2026-10-04T19:28:20Z",
+      "generated": "2026-10-09T23:09:11Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -42,7 +42,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-clibs",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -56,7 +56,7 @@
               "BSD-3-Clause"
             ],
             "name": "FreeBSD-dhclient",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -91,7 +91,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-libcasper",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -154,7 +154,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -189,7 +189,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -210,7 +210,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-utilities",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -238,7 +238,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -306,7 +306,7 @@
           {
             "name": "github.com/bakito/adguardhome-sync",
             "purl": "",
-            "version": "v0.9.3"
+            "version": "v0.9.4"
           },
           {
             "name": "github.com/beorn7/perks",
@@ -331,7 +331,7 @@
           {
             "name": "github.com/gin-contrib/sse",
             "purl": "",
-            "version": "v1.1.1"
+            "version": "v1.1.2"
           },
           {
             "name": "github.com/gin-gonic/gin",
@@ -341,17 +341,17 @@
           {
             "name": "github.com/go-playground/locales",
             "purl": "",
-            "version": "v0.14.1"
+            "version": "v0.14.2"
           },
           {
             "name": "github.com/go-playground/universal-translator",
             "purl": "",
-            "version": "v0.18.1"
+            "version": "v0.18.2"
           },
           {
             "name": "github.com/go-playground/validator/v10",
             "purl": "",
-            "version": "v10.30.3"
+            "version": "v10.30.5"
           },
           {
             "name": "github.com/go-resty/resty/v2",
@@ -401,22 +401,22 @@
           {
             "name": "github.com/prometheus/client_golang",
             "purl": "",
-            "version": "v1.24.1"
+            "version": "v1.25.0"
           },
           {
             "name": "github.com/prometheus/client_model",
             "purl": "",
-            "version": "v0.6.2"
+            "version": "v0.6.3"
           },
           {
             "name": "github.com/prometheus/common",
             "purl": "",
-            "version": "v0.70.1"
+            "version": "v0.72.0"
           },
           {
             "name": "github.com/prometheus/procfs",
             "purl": "",
-            "version": "v0.21.1"
+            "version": "v0.22.0"
           },
           {
             "name": "github.com/quic-go/qpack",
@@ -426,7 +426,7 @@
           {
             "name": "github.com/quic-go/quic-go",
             "purl": "",
-            "version": "v0.61.0"
+            "version": "v0.63.0"
           },
           {
             "name": "github.com/robfig/cron/v3",
@@ -456,7 +456,7 @@
           {
             "name": "go.mongodb.org/mongo-driver/v2",
             "purl": "",
-            "version": "v2.8.0"
+            "version": "v2.9.2"
           },
           {
             "name": "go.uber.org/multierr",
@@ -471,27 +471,27 @@
           {
             "name": "golang.org/x/crypto",
             "purl": "",
-            "version": "v0.56.0"
+            "version": "v0.57.0"
           },
           {
             "name": "golang.org/x/mod",
             "purl": "",
-            "version": "v0.40.0"
+            "version": "v0.41.0"
           },
           {
             "name": "golang.org/x/net",
             "purl": "",
-            "version": "v0.58.0"
+            "version": "v0.60.0"
           },
           {
             "name": "golang.org/x/sys",
             "purl": "",
-            "version": "v0.47.0"
+            "version": "v0.49.0"
           },
           {
             "name": "golang.org/x/text",
             "purl": "",
-            "version": "v0.41.0"
+            "version": "v0.43.0"
           },
           {
             "name": "google.golang.org/protobuf",
@@ -506,7 +506,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.27.1"
+            "version": "v1.27.2"
           }
         ],
         "java": [],
