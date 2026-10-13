@@ -1,3 +1,9 @@
 #!/bin/sh
 # Start adguardhome-sync
+# Settings come from ORIGIN_*/REPLICA*_ variables or /config/adguardhome-sync.yaml.
+# An empty one still counts (REPLICA1_URL= adds a replica with no URL), so
+# drop them: the compose lists them empty for fjord to ask for.
+for v in $(env | sed -nE 's/^((ORIGIN|REPLICA[0-9]*)_[A-Z0-9_]*)=$/\1/p'); do
+    unset "$v"
+done
 exec s6-setuidgid bsd /usr/local/bin/adguardhome-sync run --config /config/adguardhome-sync.yaml

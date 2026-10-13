@@ -39,7 +39,13 @@ services:
       - PUID=1000  # User ID for the application process
       - PGID=1000  # Group ID for the application process
       - TZ=UTC  # Timezone for the container
-      - CONFIG_FILE=  # Path to configuration file (default: /config/adguardhome-sync.yaml)
+      - ORIGIN_URL=  # The AdGuard Home to copy from (e.g. http://192.168.1.2:3000)
+      - ORIGIN_USERNAME=  # Its admin user
+      - ORIGIN_PASSWORD=<ORIGIN_PASSWORD>  # Its admin password
+      - REPLICA1_URL=  # The AdGuard Home to copy to (more: REPLICA2_URL, ...)
+      - REPLICA1_USERNAME=  # Its admin user
+      - REPLICA1_PASSWORD=<REPLICA1_PASSWORD>  # Its admin password
+      - CRON=*/10 * * * *  # When to sync, cron syntax (empty: only at start)
     volumes:
       - "/containers/adguardhome-sync:/config"
     ports:
@@ -60,7 +66,13 @@ DIRECTOR_PROJECT=adguardhome-sync
 PUID=1000
 PGID=1000
 TZ=UTC
-CONFIG_FILE=
+ORIGIN_URL=
+ORIGIN_USERNAME=
+ORIGIN_PASSWORD=<ORIGIN_PASSWORD>
+REPLICA1_URL=
+REPLICA1_USERNAME=
+REPLICA1_PASSWORD=<REPLICA1_PASSWORD>
+CRON=*/10 * * * *
 ```
 
 **appjail-director.yml**:
@@ -83,7 +95,13 @@ services:
         - PUID: !ENV '${PUID}'
         - PGID: !ENV '${PGID}'
         - TZ: !ENV '${TZ}'
-        - CONFIG_FILE: !ENV '${CONFIG_FILE}'
+        - ORIGIN_URL: !ENV '${ORIGIN_URL}'
+        - ORIGIN_USERNAME: !ENV '${ORIGIN_USERNAME}'
+        - ORIGIN_PASSWORD: !ENV '${ORIGIN_PASSWORD}'
+        - REPLICA1_URL: !ENV '${REPLICA1_URL}'
+        - REPLICA1_USERNAME: !ENV '${REPLICA1_USERNAME}'
+        - REPLICA1_PASSWORD: !ENV '${REPLICA1_PASSWORD}'
+        - CRON: !ENV '${CRON}'
     volumes:
       - adguardhome-sync: /config
 volumes:
@@ -127,7 +145,13 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=UTC
-      - CONFIG_FILE=
+      - ORIGIN_URL=
+      - ORIGIN_USERNAME=
+      - ORIGIN_PASSWORD=<ORIGIN_PASSWORD>
+      - REPLICA1_URL=
+      - REPLICA1_USERNAME=
+      - REPLICA1_PASSWORD=<REPLICA1_PASSWORD>
+      - CRON=*/10 * * * *
     volumes:
       - "/containers/adguardhome-sync:/config"
 ```
@@ -143,13 +167,19 @@ Save as `bastille-compose.yml`, then run `bastille up`.
 | `PUID` | `1000` | User ID for the application process |
 | `PGID` | `1000` | Group ID for the application process |
 | `TZ` | `UTC` | Timezone for the container |
-| `CONFIG_FILE` | `` | Path to configuration file (default: /config/adguardhome-sync.yaml) |
+| `ORIGIN_URL` | `` | The AdGuard Home to copy from (e.g. http://192.168.1.2:3000) |
+| `ORIGIN_USERNAME` | `` | Its admin user |
+| `ORIGIN_PASSWORD` | `<ORIGIN_PASSWORD>` | Its admin password |
+| `REPLICA1_URL` | `` | The AdGuard Home to copy to (more: REPLICA2_URL, ...) |
+| `REPLICA1_USERNAME` | `` | Its admin user |
+| `REPLICA1_PASSWORD` | `<REPLICA1_PASSWORD>` | Its admin password |
+| `CRON` | `*/10 * * * *` | When to sync, cron syntax (empty: only at start) |
 
 ### Volumes
 
 | Path | Description |
 |------|-------------|
-| `/config` | Configuration directory |
+| `/config` | Configuration directory; an adguardhome-sync.yaml here works instead of the variables |
 
 ### Ports
 

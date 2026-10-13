@@ -11,7 +11,7 @@ ARG BASE_VERSION=15
 FROM ghcr.io/daemonless/base:${BASE_VERSION} AS builder
 
 # Install build dependencies
-RUN pkg update && pkg install -y go125 git ca_root_nss
+RUN pkg update && pkg install -y go126 git ca_root_nss
 
 ARG UPSTREAM_URL="https://api.github.com/repos/bakito/adguardhome-sync/releases/latest"
 
@@ -21,7 +21,7 @@ RUN mkdir -p /app && \
     echo "Building AdGuardHome Sync ${VERSION}" && \
     git clone --depth 1 --branch "${VERSION}" https://github.com/bakito/adguardhome-sync.git /tmp/src && \
     cd /tmp/src && \
-    CGO_ENABLED=0 /usr/local/bin/go125 build -ldflags="-s -w -X github.com/bakito/adguardhome-sync/version.Version=${VERSION}" -o /usr/local/bin/adguardhome-sync . && \
+    CGO_ENABLED=0 /usr/local/bin/go126 build -ldflags="-s -w -X github.com/bakito/adguardhome-sync/version.Version=${VERSION}" -o /usr/local/bin/adguardhome-sync . && \
     echo "${VERSION}" > /app/version
 
 # Production image
