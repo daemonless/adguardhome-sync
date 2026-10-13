@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-09T23:09:48Z",
+  "generated": "2026-10-13T21:46:41Z",
   "image": "adguardhome-sync",
   "tags": {
     "latest": {
       "app_version": "v0.9.4",
       "arch": "amd64",
-      "generated": "2026-10-09T23:09:11Z",
+      "generated": "2026-10-13T21:46:09Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -252,7 +252,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.130"
+            "version": "3.131"
           },
           {
             "licenses": [
@@ -280,7 +280,7 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.7.5"
+            "version": "2.8.4"
           },
           {
             "licenses": [
