@@ -2,7 +2,7 @@
 # Multi-stage build
 
 ARG BASE_VERSION=15
-FROM ghcr.io/daemonless/base:${BASE_VERSION} AS builder
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION} AS builder
 
 # Install build dependencies
 RUN pkg update && pkg install -y go126 git ca_root_nss
