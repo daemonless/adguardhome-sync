@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-23T07:26:02Z",
+  "generated": "2026-10-23T10:23:26Z",
   "image": "adguardhome-sync",
   "tags": {
     "latest": {
       "app_version": "v0.9.4",
       "arch": "amd64",
-      "generated": "2026-10-23T07:25:19Z",
+      "generated": "2026-10-23T10:12:32Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
