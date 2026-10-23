@@ -6,4 +6,4 @@
 for v in $(env | sed -nE 's/^((ORIGIN|REPLICA[0-9]*)_[A-Z0-9_]*)=$/\1/p'); do
     unset "$v"
 done
-exec s6-setuidgid bsd /usr/local/bin/adguardhome-sync run --config /config/adguardhome-sync.yaml
+exec /usr/local/bin/adguardhome-sync run --config /config/adguardhome-sync.yaml

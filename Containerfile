@@ -25,7 +25,7 @@ RUN mkdir -p /app && \
     echo "${VERSION}" > /app/version
 
 # Production image
-FROM ghcr.io/daemonless/base:${BASE_VERSION}
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION}
 
 ARG FREEBSD_ARCH=amd64
 ARG PACKAGES="ca_root_nss"
@@ -71,9 +71,9 @@ RUN mkdir -p /config && \
 
 # Copy service definition
 COPY root/ /
+RUN chmod +x /daemonless/libexec/adguardhome-sync
 
-# Make scripts executable
-RUN chmod +x /etc/services.d/*/run /etc/cont-init.d/* 2>/dev/null || true
+CMD ["/daemonless/libexec/adguardhome-sync"]
 
 # --- Expose (Injected by Generator) ---
 EXPOSE 8080

@@ -1,3 +1,7 @@
 icon: ':simple-adguard:'
+# Without an origin it exits at once: run the image's own CMD and expect that
+# error (it proves /init, dsu, the launcher and the binary all work).
 cit:
-  mode: shell
+  mode: command
+  expect_exit: 1
+  expect_output: "origin URL is required"
