@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-04T11:48:03Z",
+  "generated": "2026-11-21T10:14:41Z",
   "image": "adguardhome-sync",
   "tags": {
     "latest": {
-      "app_version": "v0.9.6",
+      "app_version": "v0.10.0",
       "arch": "amd64",
-      "generated": "2026-11-04T11:47:32Z",
+      "generated": "2026-11-21T10:14:07Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -273,7 +273,7 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.8.4"
+            "version": "2.9.2"
           }
         ],
         "go": [
@@ -285,7 +285,7 @@
           {
             "name": "github.com/bakito/adguardhome-sync",
             "purl": "",
-            "version": "v0.9.6"
+            "version": "v0.10.0"
           },
           {
             "name": "github.com/beorn7/perks",
@@ -295,7 +295,7 @@
           {
             "name": "github.com/caarlos0/env/v11",
             "purl": "",
-            "version": "v11.4.1"
+            "version": "v11.4.2"
           },
           {
             "name": "github.com/cespare/xxhash/v2",
@@ -455,7 +455,7 @@
           {
             "name": "golang.org/x/crypto",
             "purl": "",
-            "version": "v0.58.0"
+            "version": "v0.59.0"
           },
           {
             "name": "golang.org/x/mod",
@@ -470,12 +470,12 @@
           {
             "name": "golang.org/x/sys",
             "purl": "",
-            "version": "v0.49.0"
+            "version": "v0.50.0"
           },
           {
             "name": "golang.org/x/text",
             "purl": "",
-            "version": "v0.43.0"
+            "version": "v0.44.0"
           },
           {
             "name": "google.golang.org/protobuf",
@@ -490,7 +490,7 @@
           {
             "name": "stdlib",
             "purl": "",
-            "version": "v1.27.3"
+            "version": "v1.27.4"
           }
         ],
         "java": [],
